@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.*;
 import java.util.Scanner;

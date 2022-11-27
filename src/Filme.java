@@ -8,7 +8,7 @@ public class Filme {
 	private String descricao;
 	private String genero;
 	private String duracaoFilme;
-	private boolean filme3D;
+	private boolean filme3D = false;
 	
 	public boolean isFilme3D() {
 		return filme3D;

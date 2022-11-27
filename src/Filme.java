@@ -8,7 +8,15 @@ public class Filme {
 	private String descricao;
 	private String genero;
 	private String duracaoFilme;
+	private boolean filme3D;
 	
+	public boolean isFilme3D() {
+		return filme3D;
+	}
+	public void setFilme3D(boolean filme3d) {
+		filme3D = filme3d;
+	}
+
 	private List<Filme> filmes = new ArrayList<>();
 	
 	public List<Filme> getFilmes() {
@@ -51,8 +59,14 @@ public class Filme {
 	
 	@Override
 	public String toString() {
+		String O3D;
+		if(filme3D == true) {
+			O3D = "SIM";
+		}else {
+			O3D = "NÃO";
+		}
 		return "NOME: " + nome + "\nDIREÇÃO: " + diretor + "\n\nSINOPSE:" + descricao + "\nGENERO: " + genero
-				+ "\nDURAÇÃO: " + duracaoFilme + "\n";
+				+ "\nDURAÇÃO: " + duracaoFilme + "\n3D: " + O3D;
 	}
 	
 

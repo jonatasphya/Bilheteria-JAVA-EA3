@@ -18,6 +18,7 @@ public class MenuController {
 		Filme filme4 = new Filme();
 		Filme filme5 = new Filme();
 		Filme filme6 = new Filme();
+		Filme filme7 = new Filme();
 
 		filme1.setNome("Duna");
 		filme1.setDiretor("Denis Villeneuve");
@@ -76,8 +77,18 @@ public class MenuController {
 		filme6.setGenero("Ficção científica/Terror");
 		filme6.setDuracaoFilme("2h 4m");
 		filme6.setFilme3D(true);
+		// ------
+		filme7.setNome("Amadeus");
+		filme7.setDiretor("Miloš Forman");
+		filme7.setDescricao("Após tentar se suicidar, Salieri (F. Murray Abraham) \n"
+				+ "confessa a um padre que foi o responsável pela morte de Mozart (Tom Hulce) \n"
+				+ "e relata como conheceu, conviveu e passou a odiar Mozart, que era um jovem \n"
+				+ "irreverente mas compunha como se sua música tivesse sido abençoada por Deus.\n");
+		filme7.setGenero("Drama/História");
+		filme7.setDuracaoFilme("2h 40m");
+		filme7.setFilme3D(false);
 
-		filmes.setFilmes(List.of(filme1, filme2, filme3, filme4, filme5, filme6));
+		filmes.setFilmes(List.of(filme1, filme2, filme3, filme4, filme5, filme6, filme7));
 
 		int i = 1;
 		int opc;
@@ -107,7 +118,6 @@ public class MenuController {
 		String SN = sc.next();
 		if (SN.equals("s") || SN.equals("S")) {
 			ingresso.setFilmeSelecionado(List.of(filme.getFilmes().get(opc - 1)));
-			ingressoVIP.setFilmeSelecionado(ingresso.getFilmeSelecionado());
 			selecionarSessoes();
 		} else {
 			menuFilmes();
@@ -138,21 +148,27 @@ public class MenuController {
 		int opc = sc.nextInt();
 
 		if (opc == 1) {
-
+			ingressoVIP.setFilmeSelecionado(ingresso.getFilmeSelecionado());
+			ingressoVIP.setHorarioSecao(ingresso.getHorarioSecao());
 			System.out.println("(VIP) QUANTAS ENTRADAS INTEIRAS (R$ 48,00)? ");
 			ingressoVIP.setIngressoInteira(sc.nextInt());
 			System.out.println("(VIP) QUANTAS ENTRADAS MEIAS (R$ 24,00)? ");
 			ingressoVIP.setIngressoMeia(sc.nextInt());
-			finalizaCompra(ingressoVIP.getIngressoInteira(), ingressoVIP.getIngressoMeia(), true);
-		} else if (opc == 2) {
+			finalizaCompra(true);
+		} 
+		else if (opc == 2) 
+		{
 
-			if (ingresso.getFilmeSelecionado().get(0).isFilme3D() == false) {
+			if (ingresso.getFilmeSelecionado().get(0).isFilme3D() == false) 
+			{
 				System.out.println("QUANTAS ENTRADAS INTEIRAS (R$ 24,00)? ");
 				ingresso.setIngressoInteira(sc.nextInt());
 				System.out.println("QUANTAS ENTRADAS MEIAS (R$ 12,00)? ");
 				ingresso.setIngressoMeia(sc.nextInt());
-				finalizaCompra(ingresso.getIngressoInteira(), ingresso.getIngressoMeia());
-			} else {
+				finalizaCompra();
+			} 
+			else 
+			{
 				System.out.println("ESTE FILME SOMENTE PODERÁ SER ADICIONADO A INGRESSOS VIP");
 				selecionarIngressos();
 			}
@@ -161,14 +177,13 @@ public class MenuController {
 		}
 	}
 
-	private final void finalizaCompra(int qtdInteira, int qtdMeia, boolean vip) {
+	private final void finalizaCompra(boolean vip) {
 
 		if (vip == true) {
-			double totalIngressos = (qtdInteira * ingressoVIP.getValorIngressoInteira())
-					+ (qtdMeia * ingressoVIP.getValorIngressoMeia());
+			double totalIngressos = ingressoVIP.comprar(ingressoVIP.getIngressoInteira(), ingressoVIP.getIngressoMeia());
 
-			System.out.println("VOCÊ IRÁ ASSISTIR " + ingresso.getFilmeSelecionado().get(0).getNome()
-					+ "\nNA SESSÃO DE " + ingresso.getHorarioSecao());
+			System.out.println("VOCÊ IRÁ ASSISTIR " + ingressoVIP.getFilmeSelecionado().get(0).getNome()
+					+ "\nNA SESSÃO DE " + ingressoVIP.getHorarioSecao());
 
 			System.out.println("INTEIRAS: " + ingressoVIP.getIngressoInteira() + " x R$ 48,00");
 			System.out.println("MEIAS: " + ingressoVIP.getIngressoMeia() + " x R$ 24,00");
@@ -178,10 +193,9 @@ public class MenuController {
 		}
 	}
 
-	private final void finalizaCompra(int qtdInteira, int qtdMeia) {
+	private final void finalizaCompra() {
 
-		double totalIngressos = (qtdInteira * ingresso.getValorIngressoInteira())
-				+ (qtdMeia * ingresso.getValorIngressoMeia());
+		double totalIngressos = ingresso.comprar(ingresso.getIngressoInteira(), ingresso.getIngressoMeia());
 
 		System.out.println("VOCÊ IRÁ ASSISTIR " + ingresso.getFilmeSelecionado().get(0).getNome() + "\nNA SESSÃO DE "
 				+ ingresso.getHorarioSecao());

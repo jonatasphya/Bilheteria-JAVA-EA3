@@ -47,6 +47,11 @@ public class Ingresso {
 		System.out.println("PARA ACESSO A LANCHONETE, COMPRE INGRESSOS VIP!");
 	}
 
+	public double comprar(int qtdIngressoInteira, int qtdIngressoMeia) {
+		
+		return (qtdIngressoInteira * valorIngressoInteira) + (qtdIngressoMeia * valorIngressoMeia);
+		
+	}
 	
 	@Override
 	public String toString() {

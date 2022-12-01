@@ -65,7 +65,7 @@ public class Filme {
 		}else {
 			O3D = "NÃO";
 		}
-		return "NOME: " + nome + "\nDIREÇÃO: " + diretor + "\n\nSINOPSE:" + descricao + "\nGENERO: " + genero
+		return "NOME: " + nome + "\nDIREÇÃO: " + diretor + "\n\nSINOPSE: " + descricao + "\nGENERO: " + genero
 				+ "\nDURAÇÃO: " + duracaoFilme + "\n3D: " + O3D;
 	}
 	

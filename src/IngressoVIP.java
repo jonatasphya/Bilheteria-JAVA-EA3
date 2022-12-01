@@ -14,11 +14,18 @@ public class IngressoVIP extends Ingresso{
 	public void acessoLanchonete() {
 		System.out.println("LANCHONETE LIBERADA!");
 	}
+	
+public double comprar(int qtdIngressoInteira, int qtdIngressoMeia) {
+		
+		return (qtdIngressoInteira * valorIngressoInteira) + (qtdIngressoMeia * valorIngressoMeia);
+		
+	}
 
 	@Override
 	public String toString() {
 		return "IngressoVIP [valorIngressoMeia=" + valorIngressoMeia + ", valorIngressoInteira=" + valorIngressoInteira
 				+ "]";
 	}
+	
 	
 }

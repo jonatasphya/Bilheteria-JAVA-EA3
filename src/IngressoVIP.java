@@ -15,7 +15,7 @@ public class IngressoVIP extends Ingresso{
 		System.out.println("LANCHONETE LIBERADA!");
 	}
 	
-public double comprar(int qtdIngressoInteira, int qtdIngressoMeia) {
+	public double comprar(int qtdIngressoInteira, int qtdIngressoMeia) {
 		
 		return (qtdIngressoInteira * valorIngressoInteira) + (qtdIngressoMeia * valorIngressoMeia);
 		

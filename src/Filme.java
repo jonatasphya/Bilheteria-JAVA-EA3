@@ -8,7 +8,27 @@ public class Filme {
 	private String descricao;
 	private String genero;
 	private String duracaoFilme;
+	private List<Filme> filmes = new ArrayList<>();
 	private boolean filme3D = false;
+	
+	public Filme() {}
+	
+	public Filme(String nome, String diretor, String descricao, String genero, String duracaoFilme, boolean filme3D) {
+		this.nome = nome;
+		this.diretor = diretor;
+		this.descricao = descricao;
+		this.genero = genero;
+		this.duracaoFilme = duracaoFilme;
+		this.filme3D = filme3D;
+	}
+	
+	public Filme(String nome, String diretor, String descricao, String genero, String duracaoFilme) {
+		this.nome = nome;
+		this.diretor = diretor;
+		this.descricao = descricao;
+		this.genero = genero;
+		this.duracaoFilme = duracaoFilme;
+	}
 	
 	public boolean isFilme3D() {
 		return filme3D;
@@ -17,8 +37,6 @@ public class Filme {
 		filme3D = filme3d;
 	}
 
-	private List<Filme> filmes = new ArrayList<>();
-	
 	public List<Filme> getFilmes() {
 		return filmes;
 	}
